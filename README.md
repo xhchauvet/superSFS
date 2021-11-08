@@ -7,7 +7,8 @@ It has four models:
     2: Only count the frequency of derived allel in each snp of each population
     3: Only draw bar polt of sfs using data generated from the results of calutation of sfs
 
-Example:\n
+Example:
+
     Model 0: python superSFS 0 ogdir threshold vcfdir annodir modir coutdir plotdir group
     Model 1: python superSFS 1 ogdir threshold vcfdir outdir
     Model 2: python superSFS 2 annodir modir coutdir
