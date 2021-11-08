@@ -2,6 +2,7 @@
 This is a tool for speculation of ancestral allel, calculation of sfs and drawing its bar plot. It is easy-to-use and runing fast. What you should prepare is the phased vcf file containg the data of populations you intrested and the outgroup, the outgroup name file, and the annotation file. Enjoy it!!!
 
 It has four models:
+
     0：Using all function, from original vcf data to sfs barplot
     1: Only speculate the ancestral allel and output new vcf file using speculated allel as reference
     2: Only count the frequency of derived allel in each snp of each population
@@ -15,6 +16,7 @@ Example:
     Model 3: python superSFS 3 coutdir plotdir group
 
 Explation for each parameter:
+
     ogdir: direction of outgroup names file
     threshold: a number that if the sum of variant allel in outpgroup greater than it,the variant allel will be counted as ancestral allel
     vcfdir: direction of vcf data
