@@ -10,7 +10,6 @@ import os
 import sys
 import matplotlib.pyplot as plt 
 
-#生成推测祖先型vcf文件
 def for_sfs(outg,thr,i,o):
     with open(i) as f:
         for l in f:
@@ -61,12 +60,7 @@ def for_sfs(outg,thr,i,o):
         # print(og_list)
 
 
-# for chr in range(1,20):
-#     i='C:/Users/Chauvet/Desktop/Chr%s_m8_phas.vcf' %chr
-#     o='C:/Users/Chauvet/Desktop/Chr%s_m8_phas_sfs.vcf' %chr
-    # for_sfs(i,o)
     
-#获取分组信息,count_derall调用 
 def get_anno(a):
     pf=pd.read_csv(a,sep='\t')
     g_l={}
@@ -80,7 +74,6 @@ def get_anno(a):
     return g_l
     # print(g_l)
 
-#生成各组样品索引，count_derall调用 
 def get_index(i,anno):
     with open(i) as f:
         g_i={}
@@ -96,7 +89,6 @@ def get_index(i,anno):
                 return g_i
                 break
 
-#统计个组每个snp的变异个数
 def count_derall(i2,g_i,anno_list,o):        
     with open(i2) as f:
         for l in f:
@@ -120,28 +112,8 @@ def count_derall(i2,g_i,anno_list,o):
                     # print(g_da)
                     f1.write(g_da)
                 
-                    
+                  
 
-# i='C:/Users/Chauvet/Desktop/Chr1_m8_phas_sfs.vcf'   
-# o='C:/Users/Chauvet/Desktop/m8_phas_sfs_count.txt'    
-# a='D:/BaiduNetdiskWorkspace/results/note/RENAME_1.txt'
-# i2='C:/Users/Chauvet/Desktop/'
-# anno=get_anno(a)
-# g_i=get_index(i,anno)
-# for x in range(1,20):
-#     i2=i2+'Chr%s_m8_phas_sfs.vcf' %x
-#     if not os.path.isfile(o):
-#         with open(o,'w') as f:
-#             name=''
-#             for x in ['EU','ME','Table','Wine','out']:
-#                 name+=x+'\t'
-#             name=name.strip()+'\n'
-#             f.write(name)
-    # count_derall(i2,g_i,o)
-
-
-
-#获取分组信息做sfs图
 def ind_sfs(i,o,gp,start):
     pf=pd.read_csv(i,sep='\t')
     # print(pf.head())
@@ -197,11 +169,9 @@ def ind_sfs(i,o,gp,start):
     for x_l in range(1,len_x//10+1):
         x_la+=[x_l*10]
     plt.xticks(x_la)
-    # plt.bar(gp_n['NUM'],gp_n['COUNT'])
     plt.bar(gp_n['NUM'][start:],gp_n['PER'][start:])
-    # plt.savefig(o+'%s_{}.pdf'.format(start) %gp)
+    plt.savefig(o+'%s_{}.pdf'.format(start) %gp)
     
-#使用全部功能0，只使用outgroup矫正功能1，只使用统计功能2，只是用绘图功能3
 
 print('\nThis is a tool for speculation of ancestral allel, calculation of sfs and drawing its bar plot. It is easy-to-use and runing fast. What you should prepare is the phased vcf file containg the data of populations you intrested and the outgroup, the outgroup name file, and the annotation file. Enjoy it!!!\n')
 print('It has four models:')
@@ -264,11 +234,3 @@ if len(sys.argv) > 2:
         ind_sfs(coutdir,plotdir,group,0)
 
 
-
-# i='C:/Users/Chauvet/Desktop/Chr1_m8_phas_sfs_count.txt'
-# o='C:/Users/Chauvet/Desktop/'
-# ind_sfs(i,o,'ME',0)
-# gpa=['EU','ME1','ME2','Table','Wine','out']
-# for gp in gpa:
-#     for start in [0,1]:
-#         ind_sfs(i,o,gp,start)
