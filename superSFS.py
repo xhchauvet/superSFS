@@ -180,7 +180,7 @@ print('    1: Only speculate the ancestral allel and output new vcf file using s
 print('    2: Only count the frequency of derived allel in each snp of each population')
 print('    3: Only draw bar polt of sfs using data generated from the results of calutation of sfs\n')
 print('Example:')
-print('    Model 0: python superSFS 0 ogdir threshold vcfdir annodir modir coutdir plotdir group')
+print('    Model 0: python superSFS 0 ogdir threshold vcfdir annodir plotdir group')
 print('    Model 1: python superSFS 1 ogdir threshold vcfdir outdir')
 print('    Model 2: python superSFS 2 annodir modir coutdir')
 print('    Model 3: python superSFS 3 coutdir plotdir group\n')
@@ -197,7 +197,9 @@ print('    group: the group that you want to analysis')
 if len(sys.argv) > 2:
     opt=sys.argv[1]
     if str(opt)=='0':
-        ogdir, threshold, vcfdir, annodir, modir, coutdir, plotdir, group = sys.argv[2:]
+        ogdir, threshold, vcfdir, annodir, plotdir, group = sys.argv[2:]
+        modir=ogdir+'temp'
+        coutdir=ogdir+'temp1'
         for_sfs(ogdir,threshold,vcfdir,modir)
         anno=get_anno(annodir)
         g_i=get_index(modir,anno)
@@ -211,6 +213,8 @@ if len(sys.argv) > 2:
                 f.write(name)
         count_derall(modir,g_i,anno_list,coutdir)
         ind_sfs(coutdir,plotdir,group,0)
+        os.remove(modir)
+        os.remove(coutdir)
     
     elif str(opt)=='1':
         ogdir, threshold, vcfdir, outdir = sys.argv[2:]
