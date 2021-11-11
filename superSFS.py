@@ -123,13 +123,13 @@ def ind_sfs(i,o,gp,start):
     cou=[]
     for index in pf_c.index:
         num+=[index]
-        cou+=[pf_c.iloc[index].values[0]]
+        cou+=[pf_c.loc[index].values[0]]
     gp_n=pd.DataFrame()
     gp_n['NUM']=num
     gp_n['COUNT']=cou
     t_all=gp_n['COUNT'].sum()
     gp_n['PER']=gp_n['COUNT']/t_all
-    len_x=len(gp_n['NUM'][1:])
+    len_x=max(gp_n['NUM'])
     if start==0:
         with open(o+'%s.txt' %gp, 'a') as f1:
             f1.write('1 observation'+'\n')
@@ -169,6 +169,8 @@ def ind_sfs(i,o,gp,start):
     for x_l in range(1,len_x//10+1):
         x_la+=[x_l*10]
     plt.xticks(x_la)
+    if len_x>100:
+        plt.xticks(rotation=45)
     plt.bar(gp_n['NUM'][start:],gp_n['PER'][start:])
     plt.savefig(o+'%s_{}.pdf'.format(start) %gp)
     
