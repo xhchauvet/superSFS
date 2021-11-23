@@ -11,7 +11,7 @@ It has four models:
 Example:
 
     Model 0: python superSFS 0 ogdir threshold vcfdir annodir plotdir group
-    Model 1: python superSFS 1 ogdir threshold vcfdir outdir
+    Model 1: python superSFS 1 ogdir threshold vcfdir modir
     Model 2: python superSFS 2 annodir modir coutdir
     Model 3: python superSFS 3 coutdir plotdir group
 
