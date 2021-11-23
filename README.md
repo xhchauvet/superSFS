@@ -10,7 +10,7 @@ It has four models:
 
 Example:
 
-    Model 0: python superSFS 0 ogdir threshold vcfdir annodir modir coutdir plotdir group
+    Model 0: python superSFS 0 ogdir threshold vcfdir annodir plotdir group
     Model 1: python superSFS 1 ogdir threshold vcfdir outdir
     Model 2: python superSFS 2 annodir modir coutdir
     Model 3: python superSFS 3 coutdir plotdir group
@@ -20,8 +20,8 @@ Explation for each parameter:
     ogdir: direction of outgroup names file
     threshold: a number that if the sum of variant allel in outpgroup greater than it,the variant allel will be counted as ancestral allel
     vcfdir: direction of vcf data
-    vannodir: direction of annotation file with sample names in first column and group name in second colum. This file should has header in first row
-    vmodir: assign the output direction of generated vcf file using speculated allel as reference
+    annodir: direction of annotation file with sample names in first column and group name in second colum. This file should has header in first row
+    modir: assign the output direction of generated vcf file using speculated allel as reference
     countdir: assign the output direction of calculation of derived allels for each snp in each group
     plotdir: assign the output direction of bar plot of sfs
     group: the group that you want to analysis
